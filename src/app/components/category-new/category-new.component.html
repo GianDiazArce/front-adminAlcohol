@@ -1,0 +1,26 @@
+<div class="col-lg-6">
+  <p class="h2 pt-3 mb-4">{{page_title}}</p>
+
+  <p *ngIf="status == 'success' "  class="alert alert-success">
+    La categoria fue creada exitosamente. <a [routerLink]="['/categorias']"  > Ver Categorias</a>
+  </p>
+
+  <p *ngIf="status == 'error' "  class="alert alert-danger">
+    Hubo un error no se pudo crear la categoria, intente nuevamente.
+  </p>
+  <form #newCat="ngForm" (ngSubmit)="onSubmit(newCat)" class="mt-1">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="category.name" class="form-control" required pattern="[a-zA-ZÀ-ÿ ]+">   
+      
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+          El nombre de la categoria no es válido
+      </small>
+    </div>
+    
+    <button type="submit" class="btn btn-success" [disabled]="!newCat.valid"><i class="fa fa-plus mr-1" aria-hidden="true"></i> Crear</button>
+    
+  </form>
+  
+  <a [routerLink]="['/categorias']" class="btn btn-dark mb-3 mt-4"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>
+</div>

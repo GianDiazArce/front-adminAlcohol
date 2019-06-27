@@ -1,0 +1,73 @@
+
+<div>
+  <p class="h2">{{page_title}}</p>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+     Velit non sapiente quaerat quod dignissimos.
+      Eaque corrupti dolorum ea nulla neque tempore,
+       fugiat illo rerum blanditiis reprehenderit? Sed eaque eum neque.</p>
+
+  <p *ngIf="status == 'success'" class="alert alert-success">Se ha creado el producto correctamente</p>
+  <p *ngIf="status == 'error'" class="alert alert-danger">Hubo un error creando el producto, vuelva a intentarlo</p>
+
+
+  <form class="col-md-5 mb-4 mt-3" #newProduct="ngForm" (ngSubmit)="onSubmit(newProduct)">
+    <div class="form-group">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="product.name" class="form-control" required pattern="[a-zA-ZÀ-ÿ ]+">
+      <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+        El nombre ingresado no es válido
+      </small>
+    </div>
+
+
+    <div class="form-group">
+      <label for="category">Categoría</label>
+      <select class="form-control" name="category" #category="ngModel" [(ngModel)]="product.category_id" required>
+        <option value="0" >Seleccione una categoría</option>
+        <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="proveedor">Proveedor</label>
+      <select class="form-control" name="proveedor" #proveedor="ngModel" [(ngModel)]="product.proveedor_id"  required>
+        <option value="0" style="display:none">Seleccione una proveedor</option>
+        <option value="{{proveedor.id}}" *ngFor="let proveedor of proveedors">{{proveedor.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="price_cost">Precio costo</label>
+      <input type="number" step=".01" name="price_cost" aria-label="Amount" #price_cost="ngModel" [(ngModel)]="product.price_cost" class="form-control" required>
+      <small *ngIf="!price_cost.valid && price_cost.touched" class="invalid-feedback d-block">
+        El precio costo no es correcto, corriga este campo
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="price_sale">Precio venta</label>
+      <input type="number" step=".01"  name="price_sale" #price_sale="ngModel" [(ngModel)]="product.price_sale" class="form-control" required>
+      <small *ngIf="!price_sale.valid && price_sale.touched" class="invalid-feedback d-block">
+          El precio venta no es correcto, corriga este campo
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="size">Tamaño de la botella</label>      
+      <input type="text" name="size" #size="ngModel" [(ngModel)]="product.size" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock</label>
+      <input type="number" name="stock" #stock="ngModel" [(ngModel)]="product.stock" class="form-control" min="0" step="1" required pattern="\d*">
+      <small *ngIf="!stock.valid && stock.touched" class="invalid-feedback d-block">
+          El stock ingresado es incorrecto, corriga el campo
+      </small>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3 mb-4" [disabled]="!newProduct.valid || product.category_id == 0  || product.proveedor_id == 0">{{page_title}}</button>
+    
+  </form>
+</div>
+
+<a [routerLink]="['/productos']" class="btn btn-dark mb-3"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>

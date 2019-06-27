@@ -1,0 +1,38 @@
+<div *ngIf="category">
+
+  <p class="h2 pt-3 text-center">Categorias</p>
+
+  <div class="py-3 ">
+    <a [routerLink]="['/crear-categoria']"  class="btn btn-success btn-md"> <i class="fa fa-plus mr-1" aria-hidden="true"></i> Crear nueva categoría</a>
+  </div>
+  <table class="table" >
+    
+    <thead>
+        
+      <tr>
+        <th>N°</th>
+        <th>Nombre</th>
+        <th class="text-right">Acciones</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let cate of category">
+        <td scope="row">{{cate.id}}</td>
+        <td>{{cate.name}}</td>
+        <td class="text-right">
+          <a [routerLink]="['/categoria',cate.id]" class="btn btn-primary btn-sm">Ver mas</a>
+          <a href="#" class="btn btn-info btn-sm ml-3">Editar</a>
+          <a href="#" class="btn btn-danger btn-sm ml-3">Eliminar</a>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+</div >
+
+<div *ngIf="!category">
+  <p class="invalid-feedback">No se encontró categorias</p>
+</div>
+
+
+
+<a [routerLink]="['/inicio']" class="btn btn-dark mb-3"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>

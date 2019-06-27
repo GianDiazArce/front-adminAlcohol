@@ -1,0 +1,9 @@
+.productLink{
+    text-decoration: none;
+    font-size: 17px;
+    color : rgb(51, 51, 51);
+
+}
+.productLink:hover {
+    color: green;
+}

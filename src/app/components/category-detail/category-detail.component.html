@@ -1,0 +1,47 @@
+
+<div *ngIf="category && products?.length > 0">
+  <p class="h3 pt-4 text-center">Categoria - {{category.name}} {{products.length}}</p>
+  <p class="text-muted">Aqui estan los productos que contiene la categoria {{category.name}}</p>
+  <br>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Proveedor</th>
+        <th>Nombre</th>
+        <th>Precio costo</th>
+        <th>Precio venta</th>
+        <th>Tamaño</th>
+        <th>Stock</th>
+        <th class="text-right">Acciones</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product of products">
+      <tr>
+        <td scope="row">{{product.id}}</td>
+        <td>{{product.proveedor.name}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price_cost}}</td>
+        <td>{{product.price_sale}}</td>
+        <td>{{product.size}}</td>
+        <td>{{product.stock}}</td>
+        <td class="text-right">
+          <a href="#" class="btn btn-primary btn-sm">Ver mas</a>
+          <a href="#" class="btn btn-info btn-sm ml-3">Editar</a>
+          <a href="#" class="btn btn-danger btn-sm ml-3">Eliminar</a>
+        </td>
+      </tr>    
+    </tbody>
+  </table>
+  
+  <a [routerLink]="['/categorias']" class="btn btn-dark mb-3"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>
+</div>
+
+<div *ngIf="products?.length == 0 && category">
+  <p class="h3 pt-4 text-center">Categoria - {{category.name}}</p> <hr class="w-50"> <br>
+ 
+  <p class="text-muted h3">Esta categoria no tiene productos</p><br><br>
+
+  <a [routerLink]="['/categorias']" class="btn btn-dark mb-3"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>
+</div>

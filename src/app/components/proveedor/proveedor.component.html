@@ -1,0 +1,33 @@
+<div>
+  <p class="h2 py-3 text-center">Proveedores</p>
+  
+  <button class="btn btn-success mb-4">
+    <i class="fa fa-plus mr-1" aria-hidden="true"></i> Crear nuevo proveedor
+  </button>
+  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th class="text-right">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedors">
+        <td scope="row">{{proveedor.id}}</td>
+        <td>{{proveedor.name}}</td>
+        <td *ngIf="proveedor.description == ''" class="text-muted"> -No tiene descripción-</td>
+        <td *ngIf="proveedor.description != ''">{{proveedor.description}}</td>
+        <td class="text-right">
+          <a href="#" class="btn btn-warning">Editar</a>
+          <a href="#" class="btn btn-danger ml-2">Eliminar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a [routerLink]="['/inicio']" class="btn btn-dark mb-3"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>
+</div>
