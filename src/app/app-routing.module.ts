@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { ErrorComponent } from './components/error/error.component';
-import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
@@ -16,7 +15,6 @@ import { ProveedorComponent } from './components/proveedor/proveedor.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'inicio', component: HomeComponent},
-  {path: 'registro', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
 
   // Rutas de categorias

@@ -11,7 +11,6 @@ import { CategoryComponent } from './components/category/category.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
 import { SaleComponent } from './components/sale/sale.component';
-import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { CategoryNewComponent } from './components/category-new/category-new.component';
@@ -28,7 +27,6 @@ import { CategoryEditComponent } from './components/category-edit/category-edit.
     ProductComponent,
     ProveedorComponent,
     SaleComponent,
-    RegisterComponent,
     LoginComponent,
     CategoryDetailComponent,
     CategoryNewComponent,
