@@ -20,5 +20,15 @@ export class ProveedorService {
 
         return this._http.get(this.url + 'provider', {headers});
     }
+
+    public save(token, proveedor): Observable <any> {
+
+        let params = "json=" + JSON.stringify(proveedor);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                        .set('Authorization', token);
+
+        return this._http.post(this.url + 'provider', params, {headers});
+    }
     
 }

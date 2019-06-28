@@ -13,12 +13,14 @@ export class CategoryNewComponent implements OnInit {
   public page_title:string;
   public category: Category;
   public status: string;
+  public formAlert;
 
   constructor(
     private _categoryService: CategoryService
   ) { 
     this.page_title = 'Crear categoria';
     this.category = new Category(1,'');
+    this.formAlert = 'creada'
   }
 
   ngOnInit() {

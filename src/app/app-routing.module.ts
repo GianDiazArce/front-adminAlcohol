@@ -10,6 +10,8 @@ import { CategoryNewComponent } from './components/category-new/category-new.com
 import { ProductComponent } from './components/product/product.component';
 import { ProductNewComponent } from './components/product-new/product-new.component';
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
+import { ProveedorNewComponent } from './components/proveedor-new/proveedor-new.component';
+import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
   {path: 'categorias', component: CategoryComponent},
   {path: 'categoria/:id', component: CategoryDetailComponent},
   {path: 'crear-categoria', component: CategoryNewComponent},
+  {path: 'editar-categoria/:id', component: CategoryEditComponent},
 
   // Rutas de productos
   {path: 'productos', component: ProductComponent},
@@ -28,6 +31,7 @@ const routes: Routes = [
 
   // Rutas de proveedores
   {path: 'proveedores', component: ProveedorComponent},
+  {path: 'crear-proveedor', component: ProveedorNewComponent},
 
 
   {path: '**', component: ErrorComponent}
