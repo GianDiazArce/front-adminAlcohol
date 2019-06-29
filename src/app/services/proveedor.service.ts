@@ -15,13 +15,13 @@ export class ProveedorService {
      }
 
     
-    public getProviders(): Observable<any>{
+    getProviders(): Observable<any>{
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
         return this._http.get(this.url + 'provider', {headers});
     }
 
-    public save(token, proveedor): Observable <any> {
+    save(token, proveedor): Observable <any> {
 
         let params = "json=" + JSON.stringify(proveedor);
 
@@ -29,6 +29,13 @@ export class ProveedorService {
                                         .set('Authorization', token);
 
         return this._http.post(this.url + 'provider', params, {headers});
+    }
+
+    delete(token, id): Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                        .set('Authorization', token);
+        
+        return this._http.delete(this.url+ 'provider/'+ id, {headers});
     }
     
 }

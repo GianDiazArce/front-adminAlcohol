@@ -11,6 +11,7 @@ import { Category } from 'src/app/models/category';
 export class CategoryComponent implements OnInit {
 
   public category;
+  public status;
 
   constructor(
     private _categoryService: CategoryService
@@ -33,6 +34,23 @@ export class CategoryComponent implements OnInit {
       },
       error => {
         console.log(error);
+      }
+    );
+  }
+
+  deleteCategory(id){
+    this._categoryService.delete(id).subscribe(
+      response => {
+        if(response.status == 'success'){
+          this.status = 'success';
+          this.getCategories();
+        }else{
+          this.status = 'error';
+        }
+      },
+      error => {
+        console.log(error);
+        this.status = 'error';
       }
     );
   }

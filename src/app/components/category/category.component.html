@@ -5,6 +5,8 @@
   <div class="py-3 ">
     <a [routerLink]="['/crear-categoria']"  class="btn btn-success btn-md"> <i class="fa fa-plus mr-1" aria-hidden="true"></i> Crear nueva categoría</a>
   </div>
+  <p *ngIf="status == 'success'" class="alert alert-success mb-3">La categoría fue sido eliminado.</p>
+  <p *ngIf="status == 'error'" class="alert alert-danger mb-3">Hubo un error eliminando la categoría, vuelva a intentarlo</p>
   <table class="table" >
     
     <thead>
@@ -22,7 +24,34 @@
         <td class="text-right">
           <a [routerLink]="['/categoria',cate.id]" class="btn btn-primary btn-sm">Ver mas</a>
           <a [routerLink]="['/editar-categoria',cate.id]" class="btn btn-info btn-sm ml-3">Editar</a>
-          <a href="#" class="btn btn-danger btn-sm ml-3">Eliminar</a>
+
+          <button type="button" class="btn btn-danger btn-sm  ml-3 mt-lg-2 mt-2 mt-xl-0" data-toggle="modal" [attr.data-target]="'#myModalCategory'+cate.id">
+              Eliminar
+          </button>          
+          
+          <!-- Modal -->
+          <div class="modal fade" id="myModalCategory{{cate.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="myModalCategoryLabel">Eliminar categoria</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ¿Estas seguro de eliminar el {{cate.name}} ?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" (click)="deleteCategory(cate.id)" data-dismiss="modal">Eliminar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Fin de modal -->
+
+
         </td>
       </tr>    
     </tbody>
