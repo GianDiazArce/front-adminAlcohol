@@ -17,6 +17,8 @@ import { CategoryNewComponent } from './components/category-new/category-new.com
 import { ProductNewComponent } from './components/product-new/product-new.component';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { ProveedorNewComponent } from './components/proveedor-new/proveedor-new.component';
+import { ProveedorEditComponent } from './components/proveedor-edit/proveedor-edit.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { ProveedorNewComponent } from './components/proveedor-new/proveedor-new.
     CategoryNewComponent,
     ProductNewComponent,
     CategoryEditComponent,
-    ProveedorNewComponent
+    ProveedorNewComponent,
+    ProveedorEditComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,7 @@
         <td>{{product.size}}</td>
         <td>{{product.stock}}</td>
         <td class="text-right">
-          <a [routerLink]="['/producto', product.id]" class="btn btn-info btn-sm">Editar</a>
+          <a [routerLink]="['/editar-producto', product.id]" class="btn btn-info btn-sm">Editar</a>
           <button type="button" class="btn btn-danger btn-sm  ml-3 mt-lg-2 mt-2 mt-xl-0" data-toggle="modal" [attr.data-target]="'#myModal'+product.id">
               Eliminar
           </button>

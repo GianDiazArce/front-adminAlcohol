@@ -17,14 +17,14 @@ export class ProductService {
      }
 
     
-    public getProducts(): Observable<any>{
+    getProducts(): Observable<any>{
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
         return this._http.get(this.url + 'product', {headers});
     }
 
-    public save(product): Observable<any>{
+    save(product): Observable<any>{
 
         let params = "json="+ JSON.stringify(product);
 
@@ -34,12 +34,29 @@ export class ProductService {
         return this._http.post(this.url + 'product', params, {headers});
     }
 
-    public delete(id):Observable<any>{
+    delete(id):Observable<any>{
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                                        .set('Authorization', this.token);
 
         return this._http.delete(this.url + 'product/' + id, {headers});
     }
+
+    getProduct(id): Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.get(this.url+ 'product/'+ id, {headers});
+    }
+
+    update(token,id,product): Observable<any>{
+
+        let params = "json="+ JSON.stringify(product);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                        .set('Authorization', token);
+
+        return this._http.put(this.url + 'product/' + id, params, {headers});
+    }
+
     
 }

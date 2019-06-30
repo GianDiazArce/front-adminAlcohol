@@ -12,6 +12,8 @@ import { ProductNewComponent } from './components/product-new/product-new.compon
 import { ProveedorComponent } from './components/proveedor/proveedor.component';
 import { ProveedorNewComponent } from './components/proveedor-new/proveedor-new.component';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
+import { ProveedorEditComponent } from './components/proveedor-edit/proveedor-edit.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 
 const routes: Routes = [
@@ -28,10 +30,12 @@ const routes: Routes = [
   // Rutas de productos
   {path: 'productos', component: ProductComponent},
   {path: 'crear-producto', component: ProductNewComponent},
+  {path: 'editar-producto/:id', component: ProductEditComponent},
 
   // Rutas de proveedores
   {path: 'proveedores', component: ProveedorComponent},
   {path: 'crear-proveedor', component: ProveedorNewComponent},
+  {path: 'editar-proveedor/:id', component: ProveedorEditComponent},
 
 
   {path: '**', component: ErrorComponent}

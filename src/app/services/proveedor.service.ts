@@ -37,5 +37,21 @@ export class ProveedorService {
         
         return this._http.delete(this.url+ 'provider/'+ id, {headers});
     }
+
+    update(token, id, proveedor) : Observable <any> {
+
+        let params = "json="+ JSON.stringify(proveedor);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                                        .set('Authorization', token);
+
+        return this._http.put(this.url + 'provider/'+ id, params, {headers});
+    }
+
+    getProvider(id): Observable <any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        return this._http.get(this.url + 'provider/'+ id, {headers});
+    }
     
 }

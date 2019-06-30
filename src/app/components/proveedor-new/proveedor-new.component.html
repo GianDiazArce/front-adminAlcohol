@@ -1,6 +1,7 @@
 <div >
 
-  <p class="h2">{{page_title}}</p>
+  <p class="h2 pt-2">{{page_title}}</p>
+  <p class="py-2" *ngIf="is_edit">Puede editar el proveedor -> "{{proveedor.name}}", luego pulse guardar</p>
   <hr>
 
   <p class="alert alert-success" *ngIf="status == 'success'">
@@ -23,7 +24,7 @@
 
     <div class="form-group">
       <label for="description">Description</label>
-      <textarea class="form-control" name="description"  rows="4"></textarea>
+      <textarea class="form-control" name="description" #description="ngModel" [(ngModel)]="proveedor.description"  rows="4"></textarea>
     </div>
 
     <button type="submit" class="btn btn-success" [disabled]="!newProveedor.valid" >{{page_title}}</button>

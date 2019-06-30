@@ -21,7 +21,7 @@
         <td *ngIf="proveedor.description == ''" class="text-muted"> -No tiene descripción-</td>
         <td *ngIf="proveedor.description != ''">{{proveedor.description}}</td>
         <td class="text-right">
-          <a href="#" class="btn btn-warning">Editar</a>
+          <a [routerLink]="['/editar-proveedor', proveedor.id]" class="btn btn-warning">Editar</a>
           <button type="button" class="btn btn-danger btn-sm  ml-3 mt-lg-2 mt-2 mt-xl-0" data-toggle="modal" [attr.data-target]="'#myModalProveedor'+proveedor.id">
               Eliminar
           </button>          
