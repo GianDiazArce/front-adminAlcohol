@@ -1,3 +1,91 @@
-<p>
-  sale works!
-</p>
+<div class="">
+
+  <p class="h2 pt-3 text-center">Pagina ventas</p>
+
+  <p class="alert alert-success" *ngIf="status== 'success'">
+    La venta fue creada exitosamente
+  </p>
+
+  <p class="alert alert-success" *ngIf="status== 'error'">
+    Hubo un error creando la venta
+  </p>
+
+
+  <form class="col-md-10 pl-0 ml-0" #formSale="ngForm" (ngSubmit)="onSubmit(formSale)">
+
+    <div class="form-group ">
+      <label for="category">Categoria</label>
+      <select class="form-control categoryInput" name="category" #categoryId="ngModel" [(ngModel)]="category_id" (change)="getProducts(s)" required>
+        <option value="{{category.id}}" *ngFor="let category of categories">{{category.name}}</option>        
+      </select>
+    </div>
+
+    <div class="row">
+
+      
+
+      <div class="form-group col-3">
+        <label for="product">Producto</label>
+        <select class="form-control" name="product" (change)="getProduct(productId)" #productId="ngModel" [(ngModel)]="product_id" required>
+          <option value="{{product.id}}" *ngFor="let product of products" >{{product.name}} - ({{product.stock}} stock) </option>      
+        </select>
+      </div>
+      
+      <div class="form-group col-3">
+        <label for="amount">Cantidad a llevar</label>
+        <input type="number" name="amount" class="form-control" min="0" step="1" [(ngModel)]="amount" (ngModelChange)="totalUpdate($event)"  pattern="\d*" >
+      </div>
+
+      <div class="form-group col-3">
+        <label for="stock">stock</label>
+        <input type="number" name="stock" class="form-control" min="0" step="1" value="{{product.stock}}"  pattern="\d*" readonly="readonly">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label for="discount">Descuento</label>
+        <div class="input-group">
+          
+          <input type="text" class="form-control descuento" name="discount" [(ngModel)]="discount" (ngModelChange)="totalDiscount($event)" aria-describedby="validationTooltipUsernamePrepend" required>
+          <div class="invalid-tooltip">
+            Este campo no puede estar vacio (ponga "0" en caso de no querer descuento).
+          </div>
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="discountPrepend">%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <p class="text-muted">{{sale.total | number:'1.0-1'}}</p> -->
+    
+    <!-- <p class="text-muted">Hola su descuento es -> {{discount}}% y su total sería ({{total | number:'1.0-1'}})</p> -->
+
+    <button type="submit" class="btn btn-success my-3 mb-3" [disabled]="!formSale.valid || product.stock == 0 || product_id == 0">Añadir a la tabla</button>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Producto</th>
+        <th>(S/.)Total</th>
+        <th>Descuento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salee of sales">
+        <td scope="row">{{salee.id}}</td>
+        <td>{{salee.user.name}}</td>
+        <td>{{salee.product.name}}</td>
+        <td class="pl-4">{{salee.total}}</td>
+        <td class="discount">{{salee.descuento}} </td>
+      </tr>      
+    </tbody>
+  </table>
+</div>
+
+<hr>
+<a [routerLink]="['/inicio']" class="btn btn-dark mb-3"> <i class="fa fa-arrow-left mr-1" aria-hidden="true"></i> Volver </a>

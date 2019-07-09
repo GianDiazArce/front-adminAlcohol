@@ -14,6 +14,7 @@ import { ProveedorNewComponent } from './components/proveedor-new/proveedor-new.
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { ProveedorEditComponent } from './components/proveedor-edit/proveedor-edit.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { SaleComponent } from './components/sale/sale.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,9 @@ const routes: Routes = [
   {path: 'proveedores', component: ProveedorComponent},
   {path: 'crear-proveedor', component: ProveedorNewComponent},
   {path: 'editar-proveedor/:id', component: ProveedorEditComponent},
+
+  // Rutas de ventas
+  {path: 'ventas', component: SaleComponent},
 
 
   {path: '**', component: ErrorComponent}
